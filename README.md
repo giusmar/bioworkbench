@@ -1,26 +1,26 @@
 # bioworkbench
-Repository with dockefile and docker compose for a bioinformatic workbench
+Repository with Dockerfiles and Docker Compose for a bioinformatics workbench.
 
-## How to use
+## Overview
+This repository organizes various Docker containers with specific versions of bioinformatics tools.
+Each folder corresponds to a single tool, where you can place input files and retrieve output files.
 
-This repository aims to organize different docker container with specific verions of tools.
-Every folder refers to a single tool where you can put input file and take output file.
+## Usage Guide
 
-## Installation steps
-
-1) First step: clone the repository
+### 1. Clone the repository
 
 ```bash
 git clone https://github.com/giusmar/bioworkbench.git
 ```
 
-2) Move in the folder and run docker compose
+### 2. Navigate to the folder and start the containers
 
 ```bash
-cd bioworkbench; docker compose up -d
+cd bioworkbench
+docker compose up -d
 ```
 
-3) Execute a tool
+### 3. Execute a tool
 
 ```bash
 docker exec fastp fastp --help
@@ -28,14 +28,17 @@ docker exec subread featuresCount --help
 docker exec star STAR --version
 ```
 
-4) Shut down docker container
+### 4. Shut down the containers
 
 ```bash
 docker compose down
 ```
 
+### 5. Restart previously built containers
+
 When you need to reuse docker container, you can simply rebuild already downloaded docker images with:
 
 ```bash
-cd bioworkbench; docker compose up -d
+cd bioworkbench
+docker compose up -d
 ```
