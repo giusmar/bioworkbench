@@ -53,3 +53,14 @@ services:
     command: ["bash"]
     stdin_open: true
     tty: true
+
+  seqtk:
+    build:
+      context: ./seqtk
+    container_name: seqtk
+    volumes:
+      - ./seqtk:/data
+    working_dir: /data
+    command: ["bash"]
+    stdin_open: true
+    tty: true
