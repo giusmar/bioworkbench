@@ -3,4 +3,4 @@ channels:
 - bioconda
 dependencies:
 - bioconda::seqtk=r82
-- conda-forge:pigz=2.8
+- conda-fore:pigz=2.8
