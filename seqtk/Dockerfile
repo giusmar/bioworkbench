@@ -1,7 +1,17 @@
-FROM mambaorg/micromamba:1.5.8-lunar
-COPY --chown=$MAMBA_USER:$MAMBA_USER conda.yml /tmp/conda.yml
-RUN micromamba install -y -n base -f /tmp/conda.yml \
-    && micromamba install -y -n base conda-forge::procps-ng \
-    && micromamba clean -a -y
+# Usa un'immagine base leggera con gli strumenti necessari
+FROM ubuntu:24.10
+
+# Aggiorna il sistema e installa dipendenze necessarie
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    zlib1g-dev \
+    git \
+    && apt-get clean
+
+# Clona il repository, entra nella directory e compila seqtk
+RUN git clone https://github.com/lh3/seqtk.git && \
+    cd seqtk && \
+    make && \
+    mv seqtk /bin
+
 USER root
-ENV PATH="$MAMBA_ROOT_PREFIX/bin:$PATH"
